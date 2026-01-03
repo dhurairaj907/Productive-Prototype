@@ -25,7 +25,7 @@ export default function Login() {
           <div className="w-16 h-16 bg-primary rounded-2xl mx-auto flex items-center justify-center shadow-lg shadow-primary/20 mb-4">
             <TrendingUp className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-3xl font-heading font-bold">Welcome to FinPath</h1>
+          <h1 className="text-3xl font-heading font-bold">Welcome to Invox</h1>
           <p className="text-muted-foreground">Log in to manage your financial future</p>
         </div>
 
