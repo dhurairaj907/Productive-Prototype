@@ -5,7 +5,7 @@ import {
   PiggyBank, 
   TrendingUp, 
   AlertTriangle, 
-  MessageSquareText, 
+  UserCircle,
   Settings, 
   Menu,
   UploadCloud
@@ -22,18 +22,20 @@ export function AppLayout({ children }: AppLayoutProps) {
   const [location] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Hide layout on onboarding
-  if (location === "/" || location === "/onboarding") {
+  // Hide sidebar/nav on login and onboarding
+  const hideLayout = ["/", "/onboarding", "/upload"].includes(location);
+
+  if (hideLayout) {
     return <main className="min-h-screen bg-background">{children}</main>;
   }
 
   const navItems = [
     { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
-    { href: "/tracking", icon: Wallet, label: "Expenses" },
+    { href: "/tracking", icon: Wallet, label: "Daily Tracking" },
     { href: "/savings", icon: PiggyBank, label: "Savings" },
     { href: "/alerts", icon: AlertTriangle, label: "Alerts" },
-    { href: "/investments", icon: TrendingUp, label: "Invest" },
-    { href: "/chat", icon: MessageSquareText, label: "Support" },
+    { href: "/investments", icon: TrendingUp, label: "Investment" },
+    { href: "/profile", icon: UserCircle, label: "Profile" },
   ];
 
   const NavContent = () => (
@@ -66,12 +68,6 @@ export function AppLayout({ children }: AppLayoutProps) {
         })}
       </nav>
       <div className="p-4 border-t border-sidebar-border">
-        <Link href="/upload">
-           <Button variant="outline" className="w-full justify-start gap-2 mb-2">
-            <UploadCloud className="w-4 h-4" />
-            Upload Data
-           </Button>
-        </Link>
         <Link href="/settings">
           <div
             className={`flex items-center gap-3 px-3 py-2.5 rounded-md transition-colors cursor-pointer ${

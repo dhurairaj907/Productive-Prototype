@@ -2,37 +2,46 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Search, Filter, Plus, Calendar } from "lucide-react";
+import { Search, Filter, Plus, Calendar, MessageSquare, PhoneIncoming } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Tracking() {
   const expenses = [
-    { id: 1, name: "Grocery Store", category: "Food", date: "Today, 10:23 AM", amount: -85.20 },
-    { id: 2, name: "Shell Station", category: "Transport", date: "Today, 08:15 AM", amount: -45.00 },
-    { id: 3, name: "Starbucks", category: "Food", date: "Yesterday, 3:45 PM", amount: -6.50 },
-    { id: 4, name: "Electric Bill", category: "Utilities", date: "Jun 29, 2024", amount: -124.30 },
-    { id: 5, name: "Amazon", category: "Shopping", date: "Jun 28, 2024", amount: -34.99 },
-    { id: 6, name: "Uber", category: "Transport", date: "Jun 27, 2024", amount: -18.20 },
-    { id: 7, name: "Netflix", category: "Entertainment", date: "Jun 25, 2024", amount: -15.99 },
+    { id: 1, name: "Grocery Store", category: "Food", date: "Today, 10:23 AM", amount: -85.20, source: "Manual" },
+    { id: 2, name: "Apple Pay - Starbucks", category: "Food", date: "Today, 08:15 AM", amount: -6.50, source: "SMS" },
+    { id: 3, name: "Gas Station", category: "Transport", date: "Yesterday, 3:45 PM", amount: -45.00, source: "SMS" },
+    { id: 4, name: "Netflix Subscription", category: "Entertainment", date: "Jun 29, 2024", amount: -15.99, source: "SMS" },
   ];
 
   return (
-    <div className="space-y-6 pb-20 md:pb-0">
+    <div className="space-y-6 pb-24 md:pb-0">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-heading font-bold text-foreground">Daily Expenses</h1>
-          <p className="text-muted-foreground">Review and categorize your transactions.</p>
+          <h1 className="text-3xl font-heading font-bold text-foreground">Daily Tracking</h1>
+          <p className="text-muted-foreground">Transactions synced from your bank and SMS.</p>
         </div>
         <div className="flex gap-2">
-           <Button variant="outline" className="gap-2">
-             <Calendar className="w-4 h-4" />
-             Select Date
-           </Button>
-           <Button className="gap-2">
+           <Button className="gap-2 shadow-lg shadow-primary/20">
              <Plus className="w-4 h-4" />
-             Add Manual
+             Add Transaction
            </Button>
         </div>
       </div>
+
+      <Card className="bg-primary/5 border-primary/20">
+        <CardContent className="p-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+              <MessageSquare className="w-5 h-5" />
+            </div>
+            <div>
+              <p className="font-semibold text-sm">SMS Tracking Active</p>
+              <p className="text-xs text-muted-foreground">Monitoring your bank transaction alerts</p>
+            </div>
+          </div>
+          <Button variant="outline" size="sm">Manage SMS</Button>
+        </CardContent>
+      </Card>
 
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="relative flex-1">
@@ -43,61 +52,49 @@ export default function Tracking() {
           <SelectTrigger className="w-full sm:w-[180px]">
              <div className="flex items-center gap-2">
                <Filter className="w-4 h-4 text-muted-foreground" />
-               <SelectValue placeholder="All Categories" />
+               <SelectValue placeholder="Filter Source" />
              </div>
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">All Categories</SelectItem>
-            <SelectItem value="food">Food</SelectItem>
-            <SelectItem value="transport">Transport</SelectItem>
-            <SelectItem value="shopping">Shopping</SelectItem>
-            <SelectItem value="utilities">Utilities</SelectItem>
+            <SelectItem value="all">All Sources</SelectItem>
+            <SelectItem value="sms">SMS Sync</SelectItem>
+            <SelectItem value="manual">Manual Entry</SelectItem>
+            <SelectItem value="bank">Direct Bank</SelectItem>
           </SelectContent>
         </Select>
       </div>
 
       <div className="space-y-4">
-        <h3 className="font-heading font-semibold text-sm text-muted-foreground uppercase tracking-wider">Today</h3>
-        {expenses.slice(0, 2).map((expense) => (
-          <ExpenseItem key={expense.id} expense={expense} />
-        ))}
-        
-        <h3 className="font-heading font-semibold text-sm text-muted-foreground uppercase tracking-wider pt-4">Yesterday</h3>
-        {expenses.slice(2, 3).map((expense) => (
-          <ExpenseItem key={expense.id} expense={expense} />
-        ))}
-        
-        <h3 className="font-heading font-semibold text-sm text-muted-foreground uppercase tracking-wider pt-4">Earlier</h3>
-        {expenses.slice(3).map((expense) => (
-          <ExpenseItem key={expense.id} expense={expense} />
+        {expenses.map((expense) => (
+          <motion.div key={expense.id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}>
+            <Card className="hover:bg-muted/30 transition-colors border-border/50 shadow-none">
+              <CardContent className="p-4 flex items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-lg shrink-0">
+                    {expense.category === "Food" && "🍔"}
+                    {expense.category === "Transport" && "🚗"}
+                    {expense.category === "Entertainment" && "🎬"}
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <p className="font-medium">{expense.name}</p>
+                      {expense.source === "SMS" && (
+                        <span className="flex items-center gap-1 text-[10px] font-bold bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded uppercase">
+                          <MessageSquare className="w-2 h-2" /> SMS
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-xs text-muted-foreground">{expense.date} • {expense.category}</p>
+                  </div>
+                </div>
+                <div className="text-right">
+                   <span className="font-semibold block">{expense.amount.toFixed(2)}</span>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
         ))}
       </div>
     </div>
   );
-}
-
-function ExpenseItem({ expense }: { expense: any }) {
-  return (
-    <Card className="hover:bg-muted/30 transition-colors border-border/50 shadow-none">
-      <CardContent className="p-4 flex items-center justify-between gap-4">
-        <div className="flex items-center gap-4">
-          <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-lg shrink-0">
-            {expense.category === "Food" && "🍔"}
-            {expense.category === "Transport" && "🚗"}
-            {expense.category === "Utilities" && "💡"}
-            {expense.category === "Shopping" && "🛍️"}
-            {expense.category === "Entertainment" && "🎬"}
-          </div>
-          <div>
-            <p className="font-medium">{expense.name}</p>
-            <p className="text-xs text-muted-foreground">{expense.date} • {expense.category}</p>
-          </div>
-        </div>
-        <div className="text-right">
-           <span className="font-semibold block">{expense.amount.toFixed(2)}</span>
-           <Button variant="link" size="sm" className="h-auto p-0 text-xs text-primary">Edit</Button>
-        </div>
-      </CardContent>
-    </Card>
-  )
 }
