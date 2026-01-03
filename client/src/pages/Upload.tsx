@@ -228,7 +228,7 @@ export default function UploadPage() {
                       <input 
                         type="file" 
                         accept=".csv"
-                        className="absolute inset-0 opacity-0 cursor-pointer"
+                        className="absolute inset-0 opacity-0 cursor-pointer z-20"
                         onChange={(e) => {
                           const file = e.target.files?.[0] || null;
                           updateAccount(account.id, { file });
