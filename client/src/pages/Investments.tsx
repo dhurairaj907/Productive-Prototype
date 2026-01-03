@@ -49,14 +49,14 @@ export default function Investments() {
              <div>
                <h3 className="text-xl font-bold mb-2">Start Investing</h3>
                <p className="text-white/80 text-sm">
-                 You have $2,119.50 in surplus this month. We recommend investing $1,000.
+                 You have ₹2,119.50 in surplus this month. We recommend investing ₹1,000.
                </p>
              </div>
              <div className="space-y-4">
                 <div className="flex justify-between items-end">
                    <div>
                      <p className="text-xs text-white/60">Projected Value (10y)</p>
-                     <p className="text-3xl font-bold">$42,500</p>
+                     <p className="text-3xl font-bold">₹42,500</p>
                    </div>
                    <TrendingUp className="w-8 h-8 text-emerald-300" />
                 </div>

@@ -85,7 +85,7 @@ export default function UploadPage() {
             <div className="space-y-3">
               <div className="p-4 rounded-xl bg-card border flex justify-between items-center">
                 <span className="text-muted-foreground">Total Analyzed</span>
-                <span className="font-bold font-heading text-lg">$7,550.00</span>
+                <span className="font-bold font-heading text-lg">₹7,550.00</span>
               </div>
               <div className="p-4 rounded-xl bg-card border flex justify-between items-center">
                 <span className="text-muted-foreground">Income Transactions</span>

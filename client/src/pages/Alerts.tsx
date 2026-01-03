@@ -8,7 +8,7 @@ export default function Alerts() {
     {
       type: "warning",
       title: "Spending Spike Detected",
-      description: "You've spent $450 on Dining this week, which is 40% higher than your average.",
+      description: "You've spent ₹450 on Dining this week, which is 40% higher than your average.",
       date: "2 hours ago",
       icon: <TrendingUp className="w-5 h-5 text-amber-600" />,
       color: "border-amber-200 bg-amber-50 dark:bg-amber-900/10 dark:border-amber-800/30",
@@ -17,7 +17,7 @@ export default function Alerts() {
     {
       type: "critical",
       title: "Subscription Price Increase",
-      description: "Your Netflix subscription charged $15.99 (previously $13.99).",
+      description: "Your Netflix subscription charged ₹15.99 (previously ₹13.99).",
       date: "Yesterday",
       icon: <AlertTriangle className="w-5 h-5 text-red-600" />,
       color: "border-red-200 bg-red-50 dark:bg-red-900/10 dark:border-red-800/30",
@@ -26,7 +26,7 @@ export default function Alerts() {
     {
       type: "info",
       title: "Unusual Merchant",
-      description: "First time transaction at 'TechGadget Inc' for $120.00.",
+      description: "First time transaction at 'TechGadget Inc' for ₹120.00.",
       date: "Jun 28",
       icon: <Bell className="w-5 h-5 text-blue-600" />,
       color: "border-blue-200 bg-blue-50 dark:bg-blue-900/10 dark:border-blue-800/30",
@@ -106,7 +106,7 @@ export default function Alerts() {
              <div>
                <h3 className="font-bold text-lg">Reduce your bills</h3>
                <p className="text-sm text-muted-foreground mt-1">
-                 We found 3 subscriptions you haven't used in 30 days. You could save $45/mo.
+                 We found 3 subscriptions you haven't used in 30 days. You could save ₹45/mo.
                </p>
              </div>
              <Button>Review Subscriptions</Button>

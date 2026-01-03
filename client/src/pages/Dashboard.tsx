@@ -72,7 +72,7 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="space-y-1">
-              <h3 className="text-2xl font-bold font-heading">$5,240.00</h3>
+              <h3 className="text-2xl font-bold font-heading">₹5,240.00</h3>
               <p className="text-xs text-emerald-600 flex items-center gap-1">
                 <TrendingUp className="w-3 h-3" />
                 +12% from last month
@@ -90,7 +90,7 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="space-y-1">
-              <h3 className="text-2xl font-bold font-heading">$3,120.50</h3>
+              <h3 className="text-2xl font-bold font-heading">₹3,120.50</h3>
               <p className="text-xs text-rose-600 flex items-center gap-1">
                 <TrendingUp className="w-3 h-3" />
                 +5% from last month
@@ -108,7 +108,7 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="space-y-1">
-              <h3 className="text-2xl font-bold font-heading">$2,119.50</h3>
+              <h3 className="text-2xl font-bold font-heading">₹2,119.50</h3>
               <p className="text-xs text-primary-foreground/80">
                 40% of income saved
               </p>
@@ -130,7 +130,7 @@ export default function Dashboard() {
                 <LineChart data={trendData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
                   <XAxis dataKey="month" stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} />
-                  <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(value) => `$${value}`} />
+                  <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(value) => `₹${value}`} />
                   <Tooltip 
                     contentStyle={{ backgroundColor: 'hsl(var(--card))', borderColor: 'hsl(var(--border))', borderRadius: '8px' }}
                     itemStyle={{ color: 'hsl(var(--foreground))' }}
@@ -176,7 +176,7 @@ export default function Dashboard() {
                   <div key={i} className="flex items-center gap-2 text-sm">
                     <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }} />
                     <span className="text-muted-foreground">{item.name}</span>
-                    <span className="font-medium">${item.value}</span>
+                    <span className="font-medium">₹{item.value}</span>
                   </div>
                 ))}
               </div>

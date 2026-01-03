@@ -47,7 +47,7 @@ export default function Profile() {
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="font-bold">${acc.balance.toLocaleString()}</p>
+                    <p className="font-bold">₹{acc.balance.toLocaleString()}</p>
                     <p className="text-[10px] text-emerald-600 font-medium uppercase tracking-wider">Sync Active</p>
                   </div>
                 </div>

@@ -22,7 +22,7 @@ export default function Chat() {
     setTimeout(() => {
       let response = "I can help with that. Could you provide more details?";
       if (userInput.toLowerCase().includes("spending") || userInput.toLowerCase().includes("spend")) {
-        response = "Based on your recent data, you've spent $3,120.50 this month. Your highest category is Housing ($1,200). Would you like a breakdown of other categories?";
+        response = "Based on your recent data, you've spent ₹3,120.50 this month. Your highest category is Housing (₹1,200). Would you like a breakdown of other categories?";
       } else if (userInput.toLowerCase().includes("save") || userInput.toLowerCase().includes("saving")) {
         response = "You're currently saving about 40% of your income, which is excellent! We recommend keeping at least 20% aside. You are on track for your Emergency Fund goal.";
       } else if (userInput.toLowerCase().includes("invest")) {

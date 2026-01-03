@@ -59,7 +59,7 @@ export default function Savings() {
                   </div>
                   <div className="text-right">
                     <p className="text-sm font-medium text-muted-foreground">Target</p>
-                    <p className="text-lg font-bold">${goal.target.toLocaleString()}</p>
+                    <p className="text-lg font-bold">₹{goal.target.toLocaleString()}</p>
                   </div>
                 </div>
 
@@ -73,7 +73,7 @@ export default function Savings() {
 
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
-                    <span className="font-medium">${goal.current.toLocaleString()}</span>
+                    <span className="font-medium">₹{goal.current.toLocaleString()}</span>
                     <span className="text-muted-foreground">{percentage}%</span>
                   </div>
                   <Progress value={percentage} className="h-2" />
@@ -82,7 +82,7 @@ export default function Savings() {
                 <div className="pt-4 border-t border-border/50">
                   <div className="flex items-center justify-between text-sm">
                      <span className="text-muted-foreground">Monthly saving needed</span>
-                     <span className="font-bold text-primary">$450/mo</span>
+                     <span className="font-bold text-primary">₹450/mo</span>
                   </div>
                 </div>
               </CardContent>

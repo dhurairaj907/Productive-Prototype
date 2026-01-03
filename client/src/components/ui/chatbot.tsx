@@ -30,8 +30,8 @@ export function Chatbot() {
 
     setTimeout(() => {
       let response = "I'm analyzing your data...";
-      if (userMsg.toLowerCase().includes("spending")) response = "You've spent $3,120 this month. 40% of that went to Housing.";
-      else if (userMsg.toLowerCase().includes("save")) response = "You're on track! You've saved $1,450 this month.";
+      if (userMsg.toLowerCase().includes("spending")) response = "You've spent ₹3,120 this month. 40% of that went to Housing.";
+      else if (userMsg.toLowerCase().includes("save")) response = "You're on track! You've saved ₹1,450 this month.";
       
       setMessages(prev => [...prev, { role: 'bot', content: response }]);
     }, 800);
