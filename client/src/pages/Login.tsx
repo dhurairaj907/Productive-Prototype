@@ -34,7 +34,7 @@ export default function Login() {
             <form onSubmit={handleLogin} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" placeholder="alex@example.com" required />
+                <Input id="email" type="email" placeholder="arjun@example.in" required />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="password">Password</Label>

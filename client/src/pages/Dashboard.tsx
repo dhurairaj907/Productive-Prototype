@@ -83,7 +83,7 @@ export default function Dashboard() {
     <div className="space-y-8 pb-20 md:pb-0">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-heading font-bold text-foreground">Welcome back, Alex</h1>
+          <h1 className="text-3xl font-heading font-bold text-foreground">Welcome back, Arjun</h1>
           <p className="text-muted-foreground">Here's your financial overview for June 2024</p>
         </div>
         <div className="flex items-center gap-2">

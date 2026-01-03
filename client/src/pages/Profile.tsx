@@ -6,8 +6,8 @@ import { CreditCard, Building, Landmark, Plus, User, Shield } from "lucide-react
 
 export default function Profile() {
   const accounts = [
-    { name: "Main Savings", bank: "Chase", last4: "4242", type: "Savings", balance: 12500 },
-    { name: "Primary Checking", bank: "Wells Fargo", last4: "8891", type: "Checking", balance: 2400 },
+    { name: "Main Savings", bank: "HDFC Bank", last4: "4242", type: "Savings", balance: 125000 },
+    { name: "Primary Checking", bank: "ICICI Bank", last4: "8891", type: "Checking", balance: 24000 },
   ];
 
   return (
@@ -17,7 +17,7 @@ export default function Profile() {
           <User className="w-10 h-10" />
         </div>
         <div>
-          <h1 className="text-3xl font-heading font-bold">Alex Johnson</h1>
+          <h1 className="text-3xl font-heading font-bold">Arjun Sharma</h1>
           <p className="text-muted-foreground">Premium Member • Freelancer Profile</p>
         </div>
       </div>
@@ -63,19 +63,19 @@ export default function Profile() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
                   <Label className="text-xs text-muted-foreground">Full Name</Label>
-                  <p className="font-medium">Alex Johnson</p>
+                  <p className="font-medium">Arjun Sharma</p>
                 </div>
                 <div className="space-y-1">
                   <Label className="text-xs text-muted-foreground">Email</Label>
-                  <p className="font-medium">alex.j@example.com</p>
+                  <p className="font-medium">arjun.s@example.in</p>
                 </div>
                 <div className="space-y-1">
                   <Label className="text-xs text-muted-foreground">Phone</Label>
-                  <p className="font-medium">+1 (555) 000-0000</p>
+                  <p className="font-medium">+91 98765 43210</p>
                 </div>
                 <div className="space-y-1">
                   <Label className="text-xs text-muted-foreground">Country</Label>
-                  <p className="font-medium">United States</p>
+                  <p className="font-medium">India</p>
                 </div>
               </div>
             </CardContent>
