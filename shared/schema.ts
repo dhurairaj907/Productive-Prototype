@@ -7,6 +7,8 @@ export const users = pgTable("users", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
   username: text("username").notNull().unique(),
   password: text("password").notNull(),
+  bankName: text("bank_name"),
+  accountNumber: text("account_number"),
 });
 
 export const transactions = pgTable("transactions", {
@@ -31,6 +33,8 @@ export const budgets = pgTable("budgets", {
 export const insertUserSchema = createInsertSchema(users).pick({
   username: true,
   password: true,
+  bankName: true,
+  accountNumber: true,
 });
 
 export const insertTransactionSchema = createInsertSchema(transactions).omit({
