@@ -191,11 +191,13 @@ export default function UploadPage() {
                           <SelectValue placeholder="Select Bank" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="chase">Chase Bank</SelectItem>
-                          <SelectItem value="wellsfargo">Wells Fargo</SelectItem>
-                          <SelectItem value="bofa">Bank of America</SelectItem>
                           <SelectItem value="hdfc">HDFC Bank</SelectItem>
-                          <SelectItem value="sbi">SBI Bank</SelectItem>
+                          <SelectItem value="sbi">State Bank of India (SBI)</SelectItem>
+                          <SelectItem value="icici">ICICI Bank</SelectItem>
+                          <SelectItem value="axis">Axis Bank</SelectItem>
+                          <SelectItem value="kotak">Kotak Mahindra Bank</SelectItem>
+                          <SelectItem value="pnb">Punjab National Bank (PNB)</SelectItem>
+                          <SelectItem value="bob">Bank of Baroda</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
