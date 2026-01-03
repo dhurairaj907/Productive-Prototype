@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Upload, FileText, Shield, PieChart, TrendingUp, Wallet } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";

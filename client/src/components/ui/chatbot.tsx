@@ -58,8 +58,8 @@ export function Chatbot() {
                 </Button>
               </CardHeader>
               <CardContent className="p-0">
-                <ScrollArea className="h-[400px] p-4" viewportRef={scrollRef}>
-                  <div className="space-y-4">
+                <ScrollArea className="h-[400px] p-4">
+                  <div className="space-y-4" ref={scrollRef}>
                     {messages.map((msg, i) => (
                       <div key={i} className={`flex gap-2 ${msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
                         <div className={`p-3 rounded-2xl text-sm ${
