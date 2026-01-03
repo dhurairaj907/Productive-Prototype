@@ -1,0 +1,116 @@
+Create a high-fidelity APPLICATION prototype for a 
+“Personal Financial Management (PFM) System”
+designed as:
+
+• Mobile Application (Android-first)
+• Web Application (Responsive dashboard)
+
+This is an APPLICATION-based system, not a static website.
+
+The UI should be modern, secure, minimal, and finance-focused,
+with smooth navigation and clear data visualization.
+
+--------------------------------
+APPLICATION SCREENS (MOBILE + WEB)
+--------------------------------
+
+1. App Launch & Onboarding Screen
+- App logo and short description
+- Login / Register options
+- Mandatory user profile selection:
+  - Student
+  - Freelancer
+  - Business Owner
+  - Employee
+- Continue button
+
+2. Bank Statement Upload Screen (Phase 1)
+- Instruction text: “Upload last 2 months bank statements (CSV)”
+- Upload button (file picker)
+- Support for multiple bank accounts
+- Upload progress indicator
+- Privacy notice (no credentials collected)
+
+3. Main Dashboard Screen (Phase 1)
+- Summary cards:
+  - Total Income
+  - Total Spending
+  - Savings Capacity
+- Charts:
+  - Pie chart: Category-wise expenses
+  - Bar chart: Monthly comparison
+  - Line chart: Spending trend
+- Filters:
+  - Bank / Account
+  - Debit / Credit
+
+4. Daily Expense Tracking Screen (Phase 2)
+- Toggle to enable SMS-based tracking (Android only)
+- Daily transaction list
+- Category labels with edit option
+- Clear SMS privacy disclaimer
+
+5. Savings Goals Screen (Phase 3)
+- “Create Savings Goal” button
+- Goal types:
+  - Emergency Fund
+  - Personal Goal
+- Fields:
+  - Goal name
+  - Target amount
+  - Optional deadline
+- Progress bars for goals
+- Monthly saving recommendation display
+
+6. Overspending Alerts Screen (Phase 4)
+- Alert cards:
+  - Overspending warning
+  - % increase vs previous 3 months
+- Category-level overspending insights
+- Informational suggestions only
+
+7. Investment Suggestions Screen (Phase 5)
+- Investment readiness indicator
+- Risk profile:
+  - Conservative
+  - Moderate
+  - Aggressive
+- Suggested investment categories
+- Recommended monthly investment amount
+- Disclaimer:
+  “This is advisory only. No investments are executed.”
+
+8. Chatbot Support (Phase 6)
+- Floating chatbot button available across the app
+- Chat interface inside the application
+- Example queries:
+  - “Why did I get this alert?”
+  - “How is my savings calculated?”
+- Friendly, professional chatbot tone
+
+9. Settings & Privacy Screen
+- Enable / disable SMS tracking
+- Manage linked bank accounts
+- Delete uploaded data
+- View privacy & security policies
+
+--------------------------------
+DESIGN REQUIREMENTS
+--------------------------------
+- Mobile-first application design
+- Responsive web dashboard version
+- Clear navigation bar / bottom tab bar
+- Secure, professional color palette
+- Clean charts and icons
+- No real bank credentials shown
+- Application-style interactions (modals, cards, tabs)
+
+--------------------------------
+OUTPUT EXPECTATION
+--------------------------------
+Generate a clickable APPLICATION prototype showing:
+Onboarding → Dashboard → Expense Tracking → Savings →
+Alerts → Investment Suggestions → Chatbot Support.
+
+This should feel like a real financial mobile app and web app,
+not a marketing website.
