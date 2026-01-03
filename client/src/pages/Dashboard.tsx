@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowUpRight, ArrowDownRight, Wallet, TrendingUp, AlertCircle, Calendar } from "lucide-react";
+import { ArrowUpRight, ArrowDownRight, Wallet, TrendingUp, AlertCircle, Calendar, Plus } from "lucide-react";
 import { 
   BarChart, 
   Bar, 
@@ -16,32 +16,69 @@ import {
   LineChart,
   Line
 } from "recharts";
-
-const spendingData = [
-  { name: 'Week 1', amount: 450 },
-  { name: 'Week 2', amount: 320 },
-  { name: 'Week 3', amount: 550 },
-  { name: 'Week 4', amount: 280 },
-];
-
-const categoryData = [
-  { name: 'Housing', value: 1200, color: 'var(--chart-1)' },
-  { name: 'Food', value: 450, color: 'var(--chart-2)' },
-  { name: 'Transport', value: 200, color: 'var(--chart-3)' },
-  { name: 'Shopping', value: 300, color: 'var(--chart-4)' },
-  { name: 'Utilities', value: 150, color: 'var(--chart-5)' },
-];
-
-const trendData = [
-  { month: 'Jan', income: 4000, expense: 2400 },
-  { month: 'Feb', income: 4200, expense: 2800 },
-  { month: 'Mar', income: 4100, expense: 2300 },
-  { month: 'Apr', income: 4500, expense: 3200 },
-  { month: 'May', income: 4800, expense: 2900 },
-  { month: 'Jun', income: 5000, expense: 3100 },
-];
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { Transaction } from "@shared/schema";
+import { apiRequest, queryClient } from "@/lib/queryClient";
+import { useToast } from "@/hooks/use-toast";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Dashboard() {
+  const { toast } = useToast();
+  const { data: transactions, isLoading } = useQuery<Transaction[]>({
+    queryKey: ["/api/transactions"],
+  });
+
+  const createTransactionMutation = useMutation({
+    mutationFn: async (newTx: any) => {
+      const res = await apiRequest("POST", "/api/transactions", newTx);
+      return res.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/transactions"] });
+      toast({
+        title: "Success",
+        description: "Transaction added successfully",
+      });
+    },
+  });
+
+  const handleAddTx = () => {
+    createTransactionMutation.mutate({
+      name: "New Transaction",
+      amount: "100.00",
+      category: "General",
+      type: "expense",
+      icon: "💰"
+    });
+  };
+
+  const spendingData = [
+    { name: 'Week 1', amount: 450 },
+    { name: 'Week 2', amount: 320 },
+    { name: 'Week 3', amount: 550 },
+    { name: 'Week 4', amount: 280 },
+  ];
+
+  const categoryData = [
+    { name: 'Housing', value: 1200, color: 'var(--chart-1)' },
+    { name: 'Food', value: 450, color: 'var(--chart-2)' },
+    { name: 'Transport', value: 200, color: 'var(--chart-3)' },
+    { name: 'Shopping', value: 300, color: 'var(--chart-4)' },
+    { name: 'Utilities', value: 150, color: 'var(--chart-5)' },
+  ];
+
+  const trendData = [
+    { month: 'Jan', income: 4000, expense: 2400 },
+    { month: 'Feb', income: 4200, expense: 2800 },
+    { month: 'Mar', income: 4100, expense: 2300 },
+    { month: 'Apr', income: 4500, expense: 3200 },
+    { month: 'May', income: 4800, expense: 2900 },
+    { month: 'Jun', income: 5000, expense: 3100 },
+  ];
+
+  const totalIncome = transactions?.filter(t => t.type === 'income').reduce((acc, t) => acc + Number(t.amount), 0) || 5240;
+  const totalExpense = transactions?.filter(t => t.type === 'expense').reduce((acc, t) => acc + Number(t.amount), 0) || 3120.50;
+
   return (
     <div className="space-y-8 pb-20 md:pb-0">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -54,8 +91,13 @@ export default function Dashboard() {
             <Calendar className="w-4 h-4" />
             Last 30 Days
           </Button>
-          <Button className="gap-2 shadow-lg shadow-primary/20">
-            <Wallet className="w-4 h-4" />
+          <Button 
+            className="gap-2 shadow-lg shadow-primary/20" 
+            onClick={handleAddTx}
+            disabled={createTransactionMutation.isPending}
+            data-testid="button-add-transaction"
+          >
+            <Plus className="w-4 h-4" />
             Add Transaction
           </Button>
         </div>
@@ -72,7 +114,7 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="space-y-1">
-              <h3 className="text-2xl font-bold font-heading">₹5,240.00</h3>
+              <h3 className="text-2xl font-bold font-heading">₹{totalIncome.toLocaleString()}</h3>
               <p className="text-xs text-emerald-600 flex items-center gap-1">
                 <TrendingUp className="w-3 h-3" />
                 +12% from last month
@@ -90,7 +132,7 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="space-y-1">
-              <h3 className="text-2xl font-bold font-heading">₹3,120.50</h3>
+              <h3 className="text-2xl font-bold font-heading">₹{totalExpense.toLocaleString()}</h3>
               <p className="text-xs text-rose-600 flex items-center gap-1">
                 <TrendingUp className="w-3 h-3" />
                 +5% from last month
@@ -108,9 +150,9 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="space-y-1">
-              <h3 className="text-2xl font-bold font-heading">₹2,119.50</h3>
+              <h3 className="text-2xl font-bold font-heading">₹{(totalIncome - totalExpense).toLocaleString()}</h3>
               <p className="text-xs text-primary-foreground/80">
-                40% of income saved
+                {Math.round(((totalIncome - totalExpense) / totalIncome) * 100)}% of income saved
               </p>
             </div>
           </CardContent>
@@ -193,27 +235,29 @@ export default function Dashboard() {
             <Button variant="ghost" size="sm" className="text-primary">View All</Button>
           </div>
           <div className="space-y-3">
-            {[
-              { name: "Grocery Store", date: "Today, 10:23 AM", amount: -85.20, icon: "🛒", type: "expense" },
-              { name: "Salary Deposit", date: "Yesterday, 9:00 AM", amount: 2400.00, icon: "💰", type: "income" },
-              { name: "Netflix Subscription", date: "Jun 28, 2024", amount: -15.99, icon: "🎬", type: "expense" },
-              { name: "Uber Ride", date: "Jun 27, 2024", amount: -24.50, icon: "🚗", type: "expense" },
-            ].map((tx, i) => (
-              <div key={i} className="flex items-center justify-between p-4 rounded-xl bg-card border border-border/50 hover:bg-muted/30 transition-colors">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-lg">
-                    {tx.icon}
+            {isLoading ? (
+              Array(4).fill(0).map((_, i) => <Skeleton key={i} className="h-20 w-full rounded-xl" />)
+            ) : (
+              transactions?.map((tx, i) => (
+                <div key={i} className="flex items-center justify-between p-4 rounded-xl bg-card border border-border/50 hover:bg-muted/30 transition-colors">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-lg">
+                      {tx.icon}
+                    </div>
+                    <div>
+                      <p className="font-medium">{tx.name}</p>
+                      <p className="text-xs text-muted-foreground">{new Date(tx.date).toLocaleDateString()}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-medium">{tx.name}</p>
-                    <p className="text-xs text-muted-foreground">{tx.date}</p>
-                  </div>
+                  <span className={`font-semibold ${tx.type === 'income' ? 'text-emerald-600' : 'text-foreground'}`}>
+                    {tx.type === 'income' ? '+' : ''}₹{Number(tx.amount).toFixed(2)}
+                  </span>
                 </div>
-                <span className={`font-semibold ${tx.type === 'income' ? 'text-emerald-600' : 'text-foreground'}`}>
-                  {tx.type === 'income' ? '+' : ''}{tx.amount.toFixed(2)}
-                </span>
-              </div>
-            ))}
+              ))
+            )}
+            {!isLoading && transactions?.length === 0 && (
+              <p className="text-center text-muted-foreground py-8">No transactions yet. Add your first one!</p>
+            )}
           </div>
         </div>
 
