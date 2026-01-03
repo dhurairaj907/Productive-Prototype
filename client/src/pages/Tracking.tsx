@@ -7,10 +7,10 @@ import { motion } from "framer-motion";
 
 export default function Tracking() {
   const expenses = [
-    { id: 1, name: "Grocery Store", category: "Food", date: "Today, 10:23 AM", amount: -85.20, source: "Manual" },
-    { id: 2, name: "Apple Pay - Starbucks", category: "Food", date: "Today, 08:15 AM", amount: -6.50, source: "SMS" },
-    { id: 3, name: "Gas Station", category: "Transport", date: "Yesterday, 3:45 PM", amount: -45.00, source: "SMS" },
-    { id: 4, name: "Netflix Subscription", category: "Entertainment", date: "Jun 29, 2024", amount: -15.99, source: "SMS" },
+    { id: 1, name: "Grocery Store", category: "Food", date: "Today, 10:23 AM", amount: -1250.20, source: "Manual" },
+    { id: 2, name: "Apple Pay - Starbucks", category: "Food", date: "Today, 08:15 AM", amount: -450.50, source: "SMS" },
+    { id: 3, name: "Gas Station", category: "Transport", date: "Yesterday, 3:45 PM", amount: -2100.00, source: "SMS" },
+    { id: 4, name: "Netflix Subscription", category: "Entertainment", date: "Jun 29, 2024", amount: -899.00, source: "SMS" },
   ];
 
   return (
@@ -88,7 +88,7 @@ export default function Tracking() {
                   </div>
                 </div>
                 <div className="text-right">
-                   <span className="font-semibold block">{expense.amount.toFixed(2)}</span>
+                   <span className="font-semibold block">₹{Math.abs(expense.amount).toLocaleString()}</span>
                 </div>
               </CardContent>
             </Card>

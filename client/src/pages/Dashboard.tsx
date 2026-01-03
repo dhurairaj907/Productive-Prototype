@@ -93,7 +93,20 @@ export default function Dashboard() {
           </Button>
           <Button 
             className="gap-2 shadow-lg shadow-primary/20" 
-            onClick={handleAddTx}
+            onClick={() => {
+              const name = window.prompt("Transaction Name", "Grocery Store");
+              const amount = window.prompt("Amount", "100.00");
+              const type = window.confirm("Is this Income? (Cancel for Expense)") ? "income" : "expense";
+              if (name && amount) {
+                createTransactionMutation.mutate({
+                  name,
+                  amount,
+                  category: "General",
+                  type,
+                  icon: type === "income" ? "💰" : "🛒"
+                });
+              }
+            }}
             disabled={createTransactionMutation.isPending}
             data-testid="button-add-transaction"
           >
@@ -114,7 +127,7 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="space-y-1">
-              <h3 className="text-2xl font-bold font-heading">₹{totalIncome.toLocaleString()}</h3>
+              <h3 className="text-2xl font-bold font-heading">₹5,24,000</h3>
               <p className="text-xs text-emerald-600 flex items-center gap-1">
                 <TrendingUp className="w-3 h-3" />
                 +12% from last month
@@ -132,7 +145,7 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="space-y-1">
-              <h3 className="text-2xl font-bold font-heading">₹{totalExpense.toLocaleString()}</h3>
+              <h3 className="text-2xl font-bold font-heading">₹3,12,050</h3>
               <p className="text-xs text-rose-600 flex items-center gap-1">
                 <TrendingUp className="w-3 h-3" />
                 +5% from last month
@@ -150,9 +163,9 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="space-y-1">
-              <h3 className="text-2xl font-bold font-heading">₹{(totalIncome - totalExpense).toLocaleString()}</h3>
+              <h3 className="text-2xl font-bold font-heading">₹2,11,950</h3>
               <p className="text-xs text-primary-foreground/80">
-                {Math.round(((totalIncome - totalExpense) / totalIncome) * 100)}% of income saved
+                40% of income saved
               </p>
             </div>
           </CardContent>

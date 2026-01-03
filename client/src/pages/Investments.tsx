@@ -46,24 +46,24 @@ export default function Investments() {
 
          <Card className="bg-gradient-to-br from-indigo-600 to-purple-600 text-white border-none">
            <CardContent className="p-6 flex flex-col justify-between h-full space-y-6">
-             <div>
+            <div>
                <h3 className="text-xl font-bold mb-2">Start Investing</h3>
                <p className="text-white/80 text-sm">
-                 You have ₹2,119.50 in surplus this month. We recommend investing ₹1,000.
+                 You have ₹2,11,950 in surplus this month. We recommend investing ₹1,00,000.
                </p>
              </div>
-             <div className="space-y-4">
-                <div className="flex justify-between items-end">
-                   <div>
-                     <p className="text-xs text-white/60">Projected Value (10y)</p>
-                     <p className="text-3xl font-bold">₹42,500</p>
-                   </div>
-                   <TrendingUp className="w-8 h-8 text-emerald-300" />
-                </div>
-                <Button variant="secondary" className="w-full text-indigo-700 font-bold">
-                  View Options
-                </Button>
-             </div>
+              <div className="space-y-4">
+                 <div className="flex justify-between items-end">
+                    <div>
+                      <p className="text-xs text-white/60">Projected Value (10y)</p>
+                      <p className="text-3xl font-bold">₹4,25,000</p>
+                    </div>
+                    <TrendingUp className="w-8 h-8 text-emerald-300" />
+                 </div>
+                 <Button variant="secondary" className="w-full text-indigo-700 font-bold">
+                   View Options
+                 </Button>
+              </div>
            </CardContent>
          </Card>
       </div>
@@ -71,12 +71,12 @@ export default function Investments() {
       <div className="space-y-4">
         <h2 className="text-xl font-heading font-semibold">Recommended Funds</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-           {[
-             { name: "S&P 500 Index", type: "ETF", risk: "Moderate", return: "10.5%" },
-             { name: "Total Bond Market", type: "Bond", risk: "Low", return: "4.2%" },
-             { name: "Tech Growth Fund", type: "Mutual Fund", risk: "High", return: "15.8%" },
-           ].map((fund, i) => (
-             <Card key={i} className="hover:border-primary/50 transition-colors cursor-pointer group">
+          {[
+            { name: "Nifty 50 Index", type: "ETF", risk: "Moderate", return: "12.5%" },
+            { name: "SGB Gold Bond", type: "Bond", risk: "Low", return: "8.2%" },
+            { name: "HDFC Tech Fund", type: "Mutual Fund", risk: "High", return: "18.8%" },
+          ].map((fund, i) => (
+            <Card key={i} className="hover:border-primary/50 transition-colors cursor-pointer group">
                <CardContent className="p-4 space-y-3">
                  <div className="flex justify-between items-start">
                    <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center font-bold text-xs text-muted-foreground">
