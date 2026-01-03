@@ -43,9 +43,9 @@ export function AppLayout({ children }: AppLayoutProps) {
       <div className="p-6 border-b border-sidebar-border">
         <div className="flex items-center gap-2 font-heading font-bold text-xl text-primary">
           <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground">
-            F
+            I
           </div>
-          FinPath
+          Invox
         </div>
       </div>
       <nav className="flex-1 p-4 space-y-1">
@@ -96,9 +96,9 @@ export function AppLayout({ children }: AppLayoutProps) {
         <header className="sticky top-0 z-40 w-full border-b border-border bg-background/80 backdrop-blur-md px-4 h-16 flex items-center justify-between md:hidden">
           <div className="flex items-center gap-2 font-heading font-bold text-lg text-primary">
              <div className="w-6 h-6 rounded bg-primary flex items-center justify-center text-primary-foreground text-xs">
-              F
+              I
             </div>
-            FinPath
+            Invox
           </div>
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>

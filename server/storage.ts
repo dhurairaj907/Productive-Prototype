@@ -61,7 +61,8 @@ export class MemStorage implements IStorage {
       ...insertTransaction, 
       id, 
       userId,
-      date: new Date()
+      date: new Date(),
+      icon: insertTransaction.icon ?? null
     };
     this.transactions.set(id, transaction);
     return transaction;
@@ -73,7 +74,12 @@ export class MemStorage implements IStorage {
 
   async createBudget(userId: string, insertBudget: InsertBudget): Promise<Budget> {
     const id = randomUUID();
-    const budget: Budget = { ...insertBudget, id, userId };
+    const budget: Budget = { 
+      ...insertBudget, 
+      id, 
+      userId,
+      period: insertBudget.period ?? "monthly"
+    };
     this.budgets.set(id, budget);
     return budget;
   }
